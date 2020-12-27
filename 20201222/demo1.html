@@ -4,7 +4,16 @@
 </head>
 <body>
 <script type="text/javascript">
-	alert(2*8);
+
+function get_members(){
+	return ['4win1', 'saseungwon', '사승원','승원','SW']; 
+}
+members = get_members();
+
+for(var i = 0; i < members.length; i++){
+	document.write(members[i].toUpperCase()+"<br />");
+}
+
 </script>
 </body>
 </html>

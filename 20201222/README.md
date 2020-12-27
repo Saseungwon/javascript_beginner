@@ -663,13 +663,7 @@ for
 i < 10;             //반복조건
 i = i + 1)          //반복이 될 때마다 실행되는 코드
 ```
-```html
-<html>
-<head>
-
-</head>
-<body>
-    <script type="text/javascript">
+```js
     for(var i = 0; i < 1000; i++){
     	document.write('coding everybody'+(i*2)+'<br />');
 }   //반복문을 사용하면 사람의 한계를 극복할 수 있다. 
@@ -696,9 +690,6 @@ i = i + 1)          //반복이 될 때마다 실행되는 코드
 	for(var i = 0; i < 10; i = i + 1;){
     	document.write('coding everybody'+i+'<br />');
 }	*/
-    </script>
-</body>
-</html>
 ```
 
 ### 반복문의 제어
@@ -733,10 +724,243 @@ i = i + 1)          //반복이 될 때마다 실행되는 코드
    for(var i = 0; i < 10; i++){
     if(i === 5) {
         continue;                   //5에서 중지되고 다시 반복문을 계속한다.
-    }
+    }                               //012346789
     document.write('coding everybody'+i+'<br />');
 }
     </script>
 </body>
 </html>
+```
+### 반복문의 중첩
+
+```js
+  	for(var i = 0; i < 10; i++){        // 0부터 9까지 변수 i에 순차적으로 값을 할당
+   		for(var j = 0; j < 10; j++){    // 0부터 9까지의 변수를 j의 값에 순차적으로 할당
+   			document.write('coding everybody'+i+j+'<br />');  // i와 j의 값을 더한 후에 출력
+
+        /*
+        coding everybody00
+        coding everybody01
+        coding everybody02
+        coding everybody03
+                .   
+                .
+                .
+        coding everybody96
+        coding everybody97
+        coding everybody98
+        coding everybody99
+        */
+```
+# ✌20201227
+
+## 📚함수(function)
+  ### 함수란?
+  - 함수 : 하나의 로직을 재실행 할 수 있도록 하는 것으로 코드의 재사용성을 높여준다. 
+  - 함수의 형식
+  ```js 
+  function 함수명( [인자...[,인자]] ){
+   코드
+   return 반환값
+}
+```
+```js 
+function numbering(){
+   	document.write(1)
+   }
+   numbering();     // 1
+ ```
+
+```js
+function numbering(){
+    i = 0;
+    while(i < 10){
+        document.write(i);
+        i += 1;
+    }   
+}
+numbering();    //0123456789
+```
+
+### 함수의 효용
+- 함수를 통해 얻을 수 있는 효과 = 재사용성
+- 어떤한 코드를 여러 곳에서 사용할 수 있는 형태로 만드는 것, 좋은 부품을 만드는 것이 묙표
+- 재사용성이 좋으면 그 함수를 사용하는 여러 곳에서 그 함수의 내용을 수정, 변경, 개선, 어떠한 문제해결을 그 코드만 하게 되면 그것을 사용하는 모든 곳에서 변경이 반영된다는 특성을 가진다. 
+- 즉, 유지보수가 용이하다는 것이다. 또한 코드의 가독성이 용이해진다. 
+- 발전의 방향 :  재사용성 / 유지보수 / 가독성 
+```js
+	function numbering(){
+    	var i = 0;
+    	while(i < 20){
+        	document.write(i+ "<br />");
+        	i += 1;
+    }   
+}
+	for(var i =0; i<1000; i++){
+	numbering();
+}
+```
+
+### 함수의 입력과 출력
+- 출력 : return
+
+```js
+	function get_member1(){
+    return '4win1';
+}
+ 
+function get_member2(){
+    return 'seungwon';
+}
+ 
+alert(get_member1());   //4win1
+alert(get_member2());   //seungwon
+```
+```js
+	function get_member(){
+    return '4win1'; //4win1이라는 값을 배출해냈기 때문에 return 뒤에 나오는 코드는 동작하지 않게 된다. 
+	return 'tktmddnjs';
+	return '사승원';
+	return 'saseungwon';
+}                               //4win1
+alert(get_member1());
+```
+- 입력
+  - 인자(argument) : 함수로 유입되는 입력값. 어떤 값을 인자로 전달하느냐에 따라 함수가 반환하는 값이 달라짐.
+
+```js
+function get_argument(arg){		
+    return arg;
+}
+
+alert(get_argument(1));		//arg = 1
+alert(get_argument(2));		//arg = 2
+```
+```js
+function get_argument(arg){ //arg : 매개변수(parameter)
+    return arg*1000;
+}
+
+alert(get_argument(1));		//arg = 1000    //1 : 인자(argument)
+alert(get_argument(2));		//arg = 2000
+```
+
+- 복수의 인자 : 여러 개의 입력값을 받을 수 있다. 하지만 리턴값은 하나만 받을 수 있는 한계가 있다. 
+```js
+function get_arguments(arg1, arg2){
+    return arg1 + arg2
+}
+ 
+alert(get_arguments(10, 20));	//30
+alert(get_arguments(20, 30));	//50
+```
+### 함수를 정의하는 다양한 방법
+```js
+numbering = function (){		//numbering이라는 변수가 함수를 갖게됨.
+    i = 0;
+    while(i < 10){
+        document.write(i);
+        i += 1;
+    }   
+}
+numbering();					//변수 뒤에 함수를 호출하는 기호를 붙여줌
+```
+```js
+(function (){				    //정의
+    i = 0;  
+    while(i < 10){
+        document.write(i);
+        i += 1;
+    }   
+}) ();					    	//호출(익명함수)
+```
+
+## 📚배열
+### 배열의 문법
+- 배열 : 연관된 데이터를 모아서 통으로 관리하기 위해 사용하는 데이터 타입
+
+```js
+var member = ['4win1', 'saseungwon', '사승원']; //배열은 대괄호[] 안에 있어야함
+alert(member);  //4win1,saseungwon,사승원
+```
+
+```js
+var member = ['4win1', 'saseungwon', '사승원'];
+alert(member[0]);       //4win1
+alert(member[1]);       //saseungwon
+alert(member[2]);       //사승원
+```
+### 배열이 없다면
+- 하나의 그릇 안에 하나의 값만 담겨있음
+```js
+function get_member1(){                     
+    return '4win1';
+}
+document.write(get_member1());
+ 
+function get_member2(){
+    return 'saseungwon';
+}
+document.write(get_member2());
+ 
+ 
+function get_member3(){
+    return '사승원'
+}
+document.write(get_member3());
+```
+- 하나의 그릇 안에 여러 개의 값들이 담겨있음
+```js
+function get_members(){
+    return ['4win1', 'saseungwon', '사승원']; 
+var members = get_members();
+document.write(members[0]);
+document.write(members[1]);
+document.write(members[2]);
+```
+
+### 배열의 사용(배열과 반복문의 조우)
+
+```js
+function get_members(){
+	return ['4win1', 'saseungwon', '사승원']; 
+}
+members = get_members();
+
+document.write(members[0].toUpperCase()+"<br />");      //4WIN1
+document.write(members[1].toUpperCase()+"<br />");      //SASEUNGWON
+document.write(members[2].toUpperCase()+"<br />");      //사승원
+
+```
+```js
+var a = ['4win1', 'saseungwon','사승원'];
+alert(a.length)    //3(그 배열에 담겨있는 원소의 갯수)
+```
+```js
+function get_members(){
+	return ['4win1', 'saseungwon', '사승원']; 
+}
+members = get_members();
+
+for(var i = 0; i < 3; i++){
+    document.write(members[i].toUpperCase()+"<br />");
+}               /*  4WIN1
+                    SASEUNGWON
+                    사승원
+                */
+```
+```js
+function get_members(){
+	return ['4win1', 'saseungwon', '사승원','승원','SW']; 
+}
+members = get_members();
+
+for(var i = 0; i < members.length; i++){       //'i < 3' 대신 'i < members.leng'를 사용해서 멤버의 수가 달라져도 가변적으로 대응할 수 있는 코드가 됨
+	document.write(members[i].toUpperCase()+"<br />");
+}   /*4WIN1
+      SASEUNGWON
+      사승원
+      승원
+      SW
+    */
 ```
