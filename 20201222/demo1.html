@@ -3,16 +3,17 @@
 	<title></title>
 </head>
 <body>
+
 <script type="text/javascript">
-
-function get_members(){
-	return ['4win1', 'saseungwon', '사승원','승원','SW']; 
-}
-members = get_members();
-
-for(var i = 0; i < members.length; i++){
-	document.write(members[i].toUpperCase()+"<br />");
-}
+var grades = {
+    'list': {'swin1': 10, 'ssw': 6, 'tktmddnjs': 80},
+	'show' : function(){
+        for(var name in this.list){
+           console.log();(name, this.list[name]);
+        }
+    }
+};
+grades.show();
 
 </script>
 </body>

@@ -1060,3 +1060,70 @@ li.sort();
 li.reverse();
 (5) ["e", "d", "c", "b", "a"]
 ```
+
+## 📚객체(object)
+
+- 객체 : 연관되어있는 데이터들을 담아내기 위한 그릇이라는 점은 배열과 객체는 유사함. index의 값으로 숫자가 아닌 문자 등 우리가 원하는 데이터로 직접 지정할 수 있다는 점이 배열과 다름.
+- 객체 만드는 법
+
+```js
+var grades = {'4win1': 10, 'ssw': 6, 'saseungwon': 80};
+
+grades
+{4win1: 10, ssw: 6, saseungwon: 80}
+
+grades['4win1']
+10
+grades['ssw']
+6
+grades['saseungwon']
+80
+
+grades['4wi'+'n1']
+10
+
+var grades = {};
+grades['4win1'] = 10;
+grades['ssw'] = 6;
+grades['saseungwon'] = 80;
+```
+
+### 객체와 반복문의 조우
+```js
+var grades = {'swin1': 10, 'ssw': 6, 'tktmddnjs': 80};
+
+for(key in grades){
+console.log(keys)}
+
+for(key in grades){
+console.log(grades[key])};
+/*
+key : swin1 value : 10
+key : ssw value : 6
+key : tktmddnjs value : 80
+*/
+```
+
+### 객체지향 프로그래밍
+```js
+var grades = {
+    'list': {'swin1': 10, 'ssw': 6, 'tktmddnjs': 80},
+    'show' : function(){
+		alert('Hello world');
+        }
+	}
+    grades['show']();
+    //Hello world
+```
+- grades 안에 각각 연관 되어있는 것들을 list와 show에 카테고라이징 함.
+```js
+var grades = {
+    'list': {'swin1': 10, 'ssw': 6, 'tktmddnjs': 80},
+	'show' : function(){
+        for(var name in this.list){
+           console.log();(name, this.list[name]);
+        }
+    }
+};
+grades.show();
+```
